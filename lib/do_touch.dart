@@ -60,8 +60,8 @@ class DoTouch {
       print(x);
       print(y);
       final bool? status = await _channel.invokeMethod(
-        "tap",
-        {"x": x, "y": y, "canSwipe": canSwipe},
+      "touchPoint",
+      {"x": x, "y": y, "canSwipe": canSwipe},
       );
   
       if (status != null) {
