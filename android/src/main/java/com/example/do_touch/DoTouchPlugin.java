@@ -1,6 +1,5 @@
 package com.example.do_touch;
 
-import com.example.do_touch.TouchHandler;
 import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.ComponentName;
