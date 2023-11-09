@@ -57,6 +57,8 @@ class DoTouch {
   static Future<bool?> touchPoint(
       {required double x, required double y, canSwipe = false}) async {
     try {
+      print(x);
+      print(y);
       final bool? status = await _channel.invokeMethod(
         "tap",
         {"x": x, "y": y, "canSwipe": canSwipe},
