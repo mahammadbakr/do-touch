@@ -34,8 +34,3 @@ android {
     }
 }
 
-
-
-dependencies {
-    implementation 'com.android.support:gesture:28.0.0'
-}
