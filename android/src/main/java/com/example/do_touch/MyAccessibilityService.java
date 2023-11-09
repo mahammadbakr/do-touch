@@ -8,7 +8,9 @@ import android.graphics.Path;
 import android.os.Build;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+import android.gesture.GestureDescription;
 import android.gesture.GestureExecutor;
+import android.gesture.GestureResultCallback;
 import androidx.annotation.RequiresApi;
 
 public class MyAccessibilityService extends AccessibilityService {
