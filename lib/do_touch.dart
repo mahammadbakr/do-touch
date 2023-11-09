@@ -58,7 +58,7 @@ class DoTouch {
       {required double x, required double y, canSwipe = false}) async {
     try {
       final bool? status = await _channel.invokeMethod(
-        "touchPoint",
+        "tap",
         {"x": x, "y": y, "canSwipe": canSwipe},
       );
   
