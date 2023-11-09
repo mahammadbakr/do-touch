@@ -50,7 +50,8 @@ public class DoTouchPlugin implements FlutterPlugin, MethodCallHandler {
             double y = call.argument("y");
             boolean canSwipe = call.argument("canSwipe");
 
-            touchPoint((float) x, (float) y, canSwipe);
+            TouchHandler.tap(x, y);
+            // touchPoint((float) x, (float) y, canSwipe);
             result.success(true);
         } else if (call.method.equals("isDeviceLocked")) {
             KeyguardManager myKM = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
