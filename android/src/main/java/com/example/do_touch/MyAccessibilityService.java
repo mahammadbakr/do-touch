@@ -38,8 +38,8 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void doTouch(float x, float y, boolean canSwipe) {
-            Log.d("X=>", x);
-            Log.d("Y=>", y);
+            Log.d("TAG", x);
+            Log.d("TAG", y);
 
         GestureDescription.Builder gestureBuilder = new GestureDescription.Builder();
         Path path = new Path();
@@ -50,7 +50,7 @@ public class MyAccessibilityService extends AccessibilityService {
         } else {
             path.moveTo(x, y);
         }
-            Log.d("PATH=>", path);
+            Log.d("TAG", path);
 
         gestureBuilder.addStroke(new GestureDescription.StrokeDescription(path, 0, 100, false));
         dispatchGesture(gestureBuilder.build(), new GestureResultCallback() {
