@@ -56,13 +56,17 @@ class DoTouch {
 
   static Future<bool?> touchPoint(
       {required double x, required double y, canSwipe = false}) async {
-    final bool? status = await _channel.invokeMethod(
-      "touchPoint",
-      {"x": x, "y": y, "canSwipe": canSwipe},
-    );
-
-    if (status != null) {
-      return status;
+    try {
+      final bool? status = await _channel.invokeMethod(
+        "touchPoint",
+        {"x": x, "y": y, "canSwipe": canSwipe},
+      );
+  
+      if (status != null) {
+        return status;
+      }
+    } catch (e) {
+    print("Error invoking touchPoint: $e");
     }
   }
 }
