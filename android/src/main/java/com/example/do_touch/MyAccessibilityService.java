@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.os.Build;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
-
+import android.gesture.GestureExecutor;
 import androidx.annotation.RequiresApi;
 
 public class MyAccessibilityService extends AccessibilityService {
@@ -40,28 +40,33 @@ public class MyAccessibilityService extends AccessibilityService {
     private void doTouch(float x, float y, boolean canSwipe) {
         GestureDescription.Builder gestureBuilder = new GestureDescription.Builder();
         Path path = new Path();
-
+        
         if (canSwipe) {
             path.moveTo(x, y);
             path.lineTo(x, y - 500);
         } else {
             path.moveTo(x, y);
         }
-
-        gestureBuilder.addStroke(new GestureDescription.StrokeDescription(path, 0, 100, true));
-        dispatchGesture(gestureBuilder.build(), new GestureResultCallback() {
+        
+        GestureDescription gestureDescription = gestureBuilder.build();
+        
+        // Create a GestureExecutor object.
+        GestureExecutor gestureExecutor = new GestureExecutor();
+        
+        // Dispatch the gesture to the system.
+        gestureExecutor.dispatchGesture(gestureDescription, new GestureResultCallback() {
             @Override
             public void onCancelled(GestureDescription gestureDescription) {
                 super.onCancelled(gestureDescription);
                 Log.d("TAG", "Gesture Cancelled");
             }
-
+        
             @Override
             public void onCompleted(GestureDescription gestureDescription) {
                 super.onCompleted(gestureDescription);
                 Log.d("TAG", "Gesture Completed");
             }
-        }, null);
+        });
     }
 
     @Override
